@@ -1,0 +1,8 @@
+Lecture1_ANNintro/saved_model/*
+Lecture2_ANNvsCNN/saved_model/*
+Lecture1_ANNintro/X*.py
+Lecture1_ANNintro/X*.ipynb
+Lecture2_ANNvsCNN/X*.py
+Lecture2_ANNvsCNN/X*.ipynb
+utils/*.nc
+tf2-env.yml
