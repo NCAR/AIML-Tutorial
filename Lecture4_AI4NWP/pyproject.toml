@@ -1,0 +1,38 @@
+[project]
+name = "e2s"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "earth2studio[aifs,aurora-fork,cbottle,climatenet,corrdiff,cyclone,data,derived,dlwp,fcn,fcn3,fengwu,fuxi,graphcast,interp-modafno,pangu,perturbation,precip-afno,precip-afno-v2,sfno,solarradiation-afno,statistics,stormcast,windgust-afno]",
+    "iprogress>=0.4",
+    "ipykernel>=7.1.0",
+    "ipython>=9.6.0",
+    "nvidia-ml-py>=13.580.82",
+    "torch-harmonics==0.8.0",
+]
+
+[tool.uv.extra-build-dependencies]
+flash-attn = ["torch"]
+
+[tool.uv.sources]
+earth2studio = { git = "https://github.com/NVIDIA/earth2studio.git" }
+torch = [
+  { index = "pytorch-cpu", marker = "sys_platform != 'linux'" },
+  { index = "pytorch-cu129", marker = "sys_platform == 'linux'" },
+]
+torchvision = [
+  { index = "pytorch-cpu", marker = "sys_platform != 'linux'" },
+  { index = "pytorch-cu129", marker = "sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true
