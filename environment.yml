@@ -1,0 +1,17 @@
+name: aiml-tutorial
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - xarray
+  - jupyter
+  - cartopy
+  - netcdf4
+  - h5netcdf
+  - scikit-learn
+  - keras
+  - tensorflow
