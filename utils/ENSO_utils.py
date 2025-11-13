@@ -5,11 +5,10 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 
-def get_data(download=True):
+def get_data(ddir='/glade/work/kjmayer/ML_demos/EdEc_ML/utils/', download=True):
     if download:
         url = 'https://eabarnes-data.atmos.colostate.edu/tutorials/ERSSTv5_deseasoneddetrended_5monthrunningmean_1950-2021.nc'
         wget.download(url)
-    ddir = '/glade/work/kjmayer/ML_demos/EdEc_ML/utils/'
     filename = 'ERSSTv5_deseasoneddetrended_5monthrunningmean_1950-2021.nc'
     sstds = xr.open_dataset(ddir+filename, decode_times=False)
     sst = sstds.sst
@@ -22,7 +21,7 @@ def get_nino34(sst):
     ninolon1 = 190
     ninolon2 = 240
     
-    sstnino = np.asarray(sst.sel(lat=slice(ninolat1,ninolat2),lon=slice(ninolon1,ninolon2)))
+    sstnino = sst.sel(lat=slice(ninolat1, ninolat2),lon=slice(ninolon1, ninolon2)).values
     nino34 = np.nanmean(sstnino,axis=(1,2))
     return nino34
 
